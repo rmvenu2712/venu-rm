@@ -8,6 +8,7 @@ interface Ribbon {
   life: number;
 }
 
+
 const CursorRibbons = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ribbonsRef = useRef<Ribbon[]>([]);
