@@ -11,40 +11,62 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 
 const ProjectSlider = () => {
-  const projects = [
-    {
-      id: "1",
-      title: "CURRENCY CONVERTER",
-      description: "API-powered Currence Converter web app built using HTML, CSS, Java Script.",
-      tech: ["HTML", "CSS", "JAVA SCRIPT"],
-      category: "front-Stack",
-      image: "/lovable-uploads/22d31f51-c174-40a7-bd95-00e4ad00eaf3.png",
-      liveUrl: "https://currence-converter.netlify.app",
-      githubUrl: "https://github.com/rmvenu2712/CurenceConverter"
-    },
-    {
-      id: "2",
-      title: "REACT PROJECTS",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features. Built for maximum productivity.",
-      tech: ["React", "Bootsrap"],
-      category: "Frontend",
-      image: "/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png",
-      liveUrl: "https://recproj.netlify.app",
-      githubUrl: "https://github.com/rmvenu2712/Orgbmi"
-    },
-
-    {
-      id: "3",
-      title: "Beauty Shop Landing",
-      description: "built an app using HTML, CSS, and JavaScript that fetches data from an API.",
-      tech: ["HTML","CSS", "JAVA SCRIPT", "Bootsrap"],
-      category: "Frontend",
-      image: "/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png",
-      liveUrl: "https://prettygurls.netlify.app",
-      githubUrl: "https://github.com/rmvenu2712/Orgbmi"
-    },
-    
-  ];
+const projects = [
+  {
+    id: "1",
+    title: "Currency Converter",
+    description: "A real-time currency converter web app powered by an external API. Built with clean and responsive design using HTML, CSS, and JavaScript.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: "/projects (2).webp",
+    liveUrl: "https://currence-converter.netlify.app",
+    githubUrl: "https://github.com/rmvenu2712/CurenceConverter"
+  },
+  {
+    id: "2",
+    title: "BMI Calculator",
+    description: "A user-friendly BMI calculator that computes Body Mass Index based on height and weight input. Features responsive design and instant results.",
+    tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+    image: "/projects (1).webp", // Replace with actual image if available
+    liveUrl: "https://bmicalculater001.netlify.app/",
+    githubUrl: "https://github.com/rmvenu2712/Orgbmi"
+  },
+  {
+    id: "3",
+    title: "Beauty Shop Landing Page",
+    description: "A modern, elegant landing page for a women's beauty products store. Fully responsive with smooth animations and call-to-action sections.",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    image: "/project(4).png", // Replace with actual image
+    liveUrl: "https://prettygurls.netlify.app",
+    githubUrl: "https://github.com/rmvenu2712/Beauty-Shop-Landing"
+  },
+  {
+    id: "4",
+    title: "Thirukural Generator",
+    description: "An interactive web app that fetches and displays random Thirukural verses with explanations using a public API. Built with React and styled using Bootstrap.",
+    tech: ["React", "Bootstrap"],
+    image: "/project(5).png", // Replace with actual image
+    liveUrl: "https://kural-tail.netlify.app/",
+    githubUrl: "https://github.com/rmvenu2712/Thirukkural-Generator-"
+  },
+  {
+    id: "5",
+    title: "Task Management System",
+    description: "A feature-rich task manager with drag-and-drop functionality, project categorization, task creation/deletion, and status tracking. Built for personal productivity.",
+    tech: ["React", "Tailwind CSS"],
+    image: "/taskmanagement.png", // Replace with actual image
+    liveUrl: "https://task-management-system-71x.pages.dev",
+    githubUrl: "https://github.com/rmvenu2712/task-management-system"
+  },
+  {
+    id: "6",
+    title: "React CRUD Operations",
+    description: "A responsive CRUD application demonstrating Create, Read, Update, and Delete operations in React. Ideal for learning state management and component lifecycle.",
+    tech: ["React", "Bootstrap"],
+    image: "/projects (1).gif", // Replace with actual image
+    liveUrl: "https://recproj.netlify.app/",
+    githubUrl: "https://github.com/rmvenu2712/Reactproject"
+  }
+];
 
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
@@ -147,12 +169,7 @@ const ProjectSlider = () => {
                           </motion.a>
                         </div>
 
-                        {/* Category badge */}
-                        <div className="absolute top-3 left-3 z-10">
-                          <span className="px-2 py-1 bg-primary/90 text-primary-foreground rounded-full text-xs font-bold backdrop-blur-sm">
-                            {project.category}
-                          </span>
-                        </div>
+                        
                       </div>
 
                       <div className="p-4">

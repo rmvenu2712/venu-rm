@@ -15,84 +15,85 @@ const Projects = () => {
   const projects = [
     {
       id: "1",
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard with real-time analytics.",
-      tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Stripe"],
-      category: "Full-Stack",
-      image: "/lovable-uploads/22d31f51-c174-40a7-bd95-00e4ad00eaf3.png",
-      liveUrl: "#",
-      githubUrl: "#"
+      title: "Currency Converter",
+      description: "A real-time currency converter web app powered by an external API. Built with clean and responsive design using HTML, CSS, and JavaScript.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      category: "Frontend",
+      image: "/projects (2).webp",
+      liveUrl: "https://currence-converter.netlify.app",
+      githubUrl: "https://github.com/rmvenu2712/CurenceConverter"
     },
     {
       id: "2",
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features. Built for maximum productivity.",
-      tech: ["React", "TypeScript", "Socket.io", "MongoDB", "Express"],
+      title: "BMI Calculator",
+      description: "A user-friendly BMI calculator that computes Body Mass Index based on height and weight input. Features responsive design and instant results.",
+      tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+      image: "/projects (1).webp", // Replace with actual image if available
       category: "Frontend",
-      image: "/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png",
-      liveUrl: "#",
-      githubUrl: "#"
+      liveUrl: "https://bmicalculater001.netlify.app/",
+      githubUrl: "https://github.com/rmvenu2712/Orgbmi"
     },
     {
       id: "3",
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard that displays current weather conditions, forecasts, and interactive maps using OpenWeather API with beautiful data visualizations.",
-      tech: ["React", "JavaScript", "OpenWeather API", "Chart.js", "CSS3"],
+      title: "Beauty Shop Landing Page",
+      description: "A modern, elegant landing page for a women's beauty products store. Fully responsive with smooth animations and call-to-action sections.",
+      tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      image: "/project(4).png", // Replace with actual image
       category: "Frontend",
-      image: "/lovable-uploads/af412c03-21e4-4856-82ff-d1a975dc84a9.png",
-      liveUrl: "#",
-      githubUrl: "#"
+      liveUrl: "https://prettygurls.netlify.app",
+      githubUrl: "https://github.com/rmvenu2712/Beauty-Shop-Landing"
     },
     {
       id: "4",
-      title: "Social Media Dashboard",
-      description: "A comprehensive social media management platform with analytics, scheduling, and multi-platform integration. Perfect for content creators and businesses.",
-      tech: ["React", "TypeScript", "Next.js", "Firebase", "Tailwind"],
-      category: "Full-Stack",
-      image: "/lovable-uploads/c3d5522b-6886-4b75-8ffc-d020016bb9c2.png",
-      liveUrl: "#",
-      githubUrl: "#"
+      title: "Thirukural Generator",
+      description: "An interactive web app that fetches and displays random Thirukural verses with explanations using a public API. Built with React and styled using Bootstrap.",
+      tech: ["React", "Bootstrap"],
+      image: "/project(5).png", // Replace with actual image
+      category: "Frontend",
+      liveUrl: "https://kural-tail.netlify.app/",
+      githubUrl: "https://github.com/rmvenu2712/Thirukkural-Generator-"
     },
     {
       id: "5",
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website showcasing projects and skills. Built with performance and accessibility in mind using latest web technologies.",
-      tech: ["React", "TypeScript", "Framer Motion", "Tailwind CSS"],
+      title: "Task Management System",
+      description: "A feature-rich task manager with drag-and-drop functionality, project categorization, task creation/deletion, and status tracking. Built for personal productivity.",
+      tech: ["React", "Tailwind CSS"],
+      image: "/taskmanagement.png", // Replace with actual image
       category: "Frontend",
-      image: "/lovable-uploads/dc13e94f-beeb-4671-8a22-0968498cdb4c.png",
-      liveUrl: "#",
-      githubUrl: "#"
+      liveUrl: "https://task-management-system-71x.pages.dev",
+      githubUrl: "https://github.com/rmvenu2712/task-management-system"
     },
     {
       id: "6",
-      title: "Learning Management System",
-      description: "A complete LMS platform with course creation, student progress tracking, and interactive learning modules. Designed for educational institutions.",
-      tech: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
-      category: "Full-Stack",
-      image: "/lovable-uploads/af412c03-21e4-4856-82ff-d1a975dc84a9.png",
-      liveUrl: "#",
-      githubUrl: "#"
+      title: "React CRUD Operations",
+      description: "A responsive CRUD application demonstrating Create, Read, Update, and Delete operations in React. Ideal for learning state management and component lifecycle.",
+      tech: ["React", "Bootstrap"],
+      image: "/projects (1).gif", // Replace with actual image
+      category: "Frontend",
+      liveUrl: "https://recproj.netlify.app/",
+      githubUrl: "https://github.com/rmvenu2712/Reactproject"
     }
   ];
+
 
   const availableCategories = Array.from(new Set(projects.map(project => project.category)));
 
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
       const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           project.tech.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
-      
-      const matchesCategory = selectedCategories.length === 0 || 
-                             selectedCategories.includes(project.category);
-      
+        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.tech.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+
+      const matchesCategory = selectedCategories.length === 0 ||
+        selectedCategories.includes(project.category);
+
       return matchesSearch && matchesCategory;
     });
   }, [projects, searchTerm, selectedCategories]);
 
   const handleCategoryToggle = (category: string) => {
-    setSelectedCategories(prev => 
-      prev.includes(category) 
+    setSelectedCategories(prev =>
+      prev.includes(category)
         ? prev.filter(c => c !== category)
         : [...prev, category]
     );
@@ -102,7 +103,7 @@ const Projects = () => {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <ScrollProgress />
       <Navbar />
-      
+
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -128,15 +129,15 @@ const Projects = () => {
               availableCategories={availableCategories}
               placeholder="Search projects..."
             />
-            
-            <motion.div 
+
+            <motion.div
               className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               {filteredProjects.map((project, index) => (
-                <motion.div 
+                <motion.div
                   key={project.id}
                   className="bg-card rounded-2xl shadow-elegant overflow-hidden hover:shadow-elegant-hover transition-all duration-300"
                   whileHover={{ y: -5 }}
@@ -146,8 +147,8 @@ const Projects = () => {
                   viewport={{ once: true }}
                 >
                   <div className="relative">
-                    <img 
-                      src={project.image} 
+                    <img
+                      src={project.image}
                       alt={project.title}
                       className="w-full h-48 object-cover"
                     />
@@ -157,7 +158,7 @@ const Projects = () => {
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
                     <h3 className="text-xl font-display font-bold mb-3">
                       {project.title}
@@ -165,10 +166,10 @@ const Projects = () => {
                     <p className="text-muted-foreground mb-4 line-clamp-3">
                       {project.description}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.tech.slice(0, 3).map((tech, techIndex) => (
-                        <span 
+                        <span
                           key={techIndex}
                           className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs font-medium"
                         >
@@ -181,7 +182,7 @@ const Projects = () => {
                         </span>
                       )}
                     </div>
-                    
+
                     <div className="flex gap-3">
                       <Button size="sm" asChild className="flex-1">
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -202,7 +203,7 @@ const Projects = () => {
             </motion.div>
 
             {filteredProjects.length === 0 && (
-              <motion.div 
+              <motion.div
                 className="text-center py-12"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -216,7 +217,7 @@ const Projects = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
