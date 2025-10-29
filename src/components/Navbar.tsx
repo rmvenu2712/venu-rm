@@ -58,14 +58,14 @@ const Navbar = () => {
             className="h-7 sm:h-10" 
           />
         </a>
-          <a 
+          {/* <a 
             href="/" 
             className="nav-link hidden md:block"
           >
             Home
-          </a>
-          <a href="/projects" className="nav-link">Projects</a>
-          <a href="/blog" className="nav-link">Blog</a>
+          </a> */}
+          {/* <a href="/projects" className="nav-link">Projects</a>
+          <a href="/blog" className="nav-link">Blog</a> */}
                 <ThemeToggle  />
         </nav>
 

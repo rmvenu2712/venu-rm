@@ -136,8 +136,8 @@ const OverViewProjects = () => {
         ref={buttonRef}
         className='flex w-fit mx-auto rounded-full px-6 py-4 border border-white bg-[#FE5C02] items-center justify-center'
       >
-        <a
-          href="/project"
+        <a target='_blank'
+          href="https://rmvenu2712.github.io/All-projects/"
           className="w-fit mx-auto group sm:w-auto text-center transition-all duration-300 ease-out cursor-pointer text-sm leading-5 text-white font-medium hover:shadow-lg active:scale-95"
         >
           View All

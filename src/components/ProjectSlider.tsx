@@ -14,64 +14,36 @@ const ProjectSlider = () => {
   const projects = [
     {
       id: "1",
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard with real-time analytics.",
-      tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Stripe"],
-      category: "Full-Stack",
+      title: "CURRENCY CONVERTER",
+      description: "API-powered Currence Converter web app built using HTML, CSS, Java Script.",
+      tech: ["HTML", "CSS", "JAVA SCRIPT"],
+      category: "front-Stack",
       image: "/lovable-uploads/22d31f51-c174-40a7-bd95-00e4ad00eaf3.png",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example"
+      liveUrl: "https://currence-converter.netlify.app",
+      githubUrl: "https://github.com/rmvenu2712/CurenceConverter"
     },
     {
       id: "2",
-      title: "Task Management App",
+      title: "REACT PROJECTS",
       description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features. Built for maximum productivity.",
-      tech: ["React", "TypeScript", "Socket.io", "MongoDB", "Express"],
+      tech: ["React", "Bootsrap"],
       category: "Frontend",
       image: "/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example"
+      liveUrl: "https://recproj.netlify.app",
+      githubUrl: "https://github.com/rmvenu2712/Orgbmi"
     },
+
     {
       id: "3",
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard that displays current weather conditions, forecasts, and interactive maps using OpenWeather API with beautiful data visualizations.",
-      tech: ["React", "JavaScript", "OpenWeather API", "Chart.js", "CSS3"],
+      title: "Beauty Shop Landing",
+      description: "built an app using HTML, CSS, and JavaScript that fetches data from an API.",
+      tech: ["HTML","CSS", "JAVA SCRIPT", "Bootsrap"],
       category: "Frontend",
-      image: "/lovable-uploads/af412c03-21e4-4856-82ff-d1a975dc84a9.png",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example"
+      image: "/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png",
+      liveUrl: "https://prettygurls.netlify.app",
+      githubUrl: "https://github.com/rmvenu2712/Orgbmi"
     },
-    {
-      id: "4",
-      title: "Social Media Dashboard",
-      description: "A comprehensive social media management platform with analytics, scheduling, and multi-platform integration. Perfect for content creators and businesses.",
-      tech: ["React", "TypeScript", "Next.js", "Firebase", "Tailwind"],
-      category: "Full-Stack",
-      image: "/lovable-uploads/c3d5522b-6886-4b75-8ffc-d020016bb9c2.png",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example"
-    },
-    {
-      id: "5",
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website showcasing projects and skills. Built with performance and accessibility in mind using latest web technologies.",
-      tech: ["React", "TypeScript", "Framer Motion", "Tailwind CSS"],
-      category: "Frontend",
-      image: "/lovable-uploads/dc13e94f-beeb-4671-8a22-0968498cdb4c.png",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example"
-    },
-    {
-      id: "6",
-      title: "Learning Management System",
-      description: "A complete LMS platform with course creation, student progress tracking, and interactive learning modules. Designed for educational institutions.",
-      tech: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
-      category: "Full-Stack",
-      image: "/lovable-uploads/af412c03-21e4-4856-82ff-d1a975dc84a9.png",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example"
-    }
+    
   ];
 
   const plugin = React.useRef(
@@ -123,7 +95,7 @@ const ProjectSlider = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {projects.map((project, index) => (
-                <CarouselItem key={project.id} className="pl-2 md:pl-4 basis-1/2 lg:basis-1/5">
+                <CarouselItem key={project.id} className="pl-2 md:pl-4 basis-1/2 lg:basis-1/4">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
