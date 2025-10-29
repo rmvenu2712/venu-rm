@@ -12,24 +12,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const ProjectSlider = () => {
 const projects = [
-  {
-    id: "1",
-    title: "Currency Converter",
-    description: "A real-time currency converter web app powered by an external API. Built with clean and responsive design using HTML, CSS, and JavaScript.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    image: "/projects (2).webp",
-    liveUrl: "https://currence-converter.netlify.app",
-    githubUrl: "https://github.com/rmvenu2712/CurenceConverter"
-  },
-  {
-    id: "2",
-    title: "BMI Calculator",
-    description: "A user-friendly BMI calculator that computes Body Mass Index based on height and weight input. Features responsive design and instant results.",
-    tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
-    image: "/projects (1).webp", // Replace with actual image if available
-    liveUrl: "https://bmicalculater001.netlify.app/",
-    githubUrl: "https://github.com/rmvenu2712/Orgbmi"
-  },
+
   {
     id: "3",
     title: "Beauty Shop Landing Page",
@@ -56,6 +39,24 @@ const projects = [
     image: "/taskmanagement.png", // Replace with actual image
     liveUrl: "https://task-management-system-71x.pages.dev",
     githubUrl: "https://github.com/rmvenu2712/task-management-system"
+  },
+    {
+    id: "1",
+    title: "Currency Converter",
+    description: "A real-time currency converter web app powered by an external API. Built with clean and responsive design using HTML, CSS, and JavaScript.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: "/projects (2).webp",
+    liveUrl: "https://currence-converter.netlify.app",
+    githubUrl: "https://github.com/rmvenu2712/CurenceConverter"
+  },
+  {
+    id: "2",
+    title: "BMI Calculator",
+    description: "A user-friendly BMI calculator that computes Body Mass Index based on height and weight input. Features responsive design and instant results.",
+    tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+    image: "/projects (1).webp", // Replace with actual image if available
+    liveUrl: "https://bmicalculater001.netlify.app/",
+    githubUrl: "https://github.com/rmvenu2712/Orgbmi"
   },
   {
     id: "6",
