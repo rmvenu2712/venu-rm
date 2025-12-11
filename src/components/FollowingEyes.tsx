@@ -43,20 +43,12 @@ const FollowingEyes = () => {
 
   return (
     <div
-    className="absolute top-[95px] sm:top-[118px] left-[42%] -translate-x-1/2 flex gap-[14px] z-[9999] pointer-events-none"
+    className="absolute top-[26%] left-[42%] -translate-x-1/2 flex gap-[14px] z-[9999] pointer-events-none"
     >
       {/* Left Eye */}
       <div
         ref={leftEyeRef}
-        style={{
-          width: '40px',
-          height: '35px',
-          borderRadius: '50%',
-          backgroundColor: 'white',
-          position: 'relative',
-          boxShadow: 'inset 0 0 20px rgba(0,0,0,0.1)',
-          overflow: 'hidden',
-        }}
+       className="w-[30px] sm:w-[40px] h-[25px] sm:h-[35px] rounded-full bg-white relative shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] overflow-hidden"
       >
         <div
           ref={leftPupilRef}
@@ -78,15 +70,8 @@ const FollowingEyes = () => {
       {/* Right Eye */}
       <div
         ref={rightEyeRef}
-        style={{
-          width: '40px',
-          height: '35px',
-          borderRadius: '50%',
-          backgroundColor: 'white',
-          position: 'relative',
-          boxShadow: 'inset 0 0 20px rgba(0,0,0,0.1)',
-          overflow: 'hidden',
-        }}
+         className="w-[30px] sm:w-[40px] h-[25px] sm:h-[35px] rounded-full bg-white relative shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] overflow-hidden"
+      
       >
         <div
           ref={rightPupilRef}

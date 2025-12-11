@@ -55,7 +55,7 @@ const Navbar = () => {
           <img 
             src="/venu-logo.png" 
             alt="VENU Logo" 
-            className="h-7 sm:h-10" 
+            className="h-10" 
           />
         </a>
           {/* <a 
