@@ -1,9 +1,10 @@
 'use client'; // If this is in app directory, ensure client-side for animations and form
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion'; // Add framer-motion: npm install framer-motion
+import pandaimage from '../../public/lovable-uploads/brunoPeekingBottom-cropped.gif'
 
 interface DetailsSectionProps {
   id?: string;
@@ -77,6 +78,16 @@ const DetailsSection = ({ id }: DetailsSectionProps) => {
       }
     })
   };
+  
+    const [showGif, setShowGif] = useState(false);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setShowGif(true);
+      }, 8000); // 3 seconds delay
+  
+      return () => clearTimeout(timer); // cleanup on unmount
+    }, []);
 
   // Optimized and relatable content: Rephrased for better flow and relatability
   const techStackItems = [
@@ -171,6 +182,8 @@ const DetailsSection = ({ id }: DetailsSectionProps) => {
           </div>
 
           {/* Right Card - Contact Form */}
+          <div className="relative">
+          {showGif  && <img src={pandaimage} className="w-[150px] absolute right-3 -top-36" alt="pandaimage" />}
           <div className="rounded-2xl sm:rounded-3xl overflow-hidden dark:shadow-[#07090d] shadow-elegant">
             {/* Card Header with background image */}
             <div
@@ -248,6 +261,8 @@ const DetailsSection = ({ id }: DetailsSectionProps) => {
               </form>
             </div>
           </div>
+          </div>
+
         </div>
       </div>
     </section>

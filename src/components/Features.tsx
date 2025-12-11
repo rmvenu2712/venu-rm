@@ -1,10 +1,10 @@
 'use client'; // Required for client-side features like Framer Motion
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { motion, Variants } from 'framer-motion'; // Install: npm install framer-motion
 import SplitText from './SplitText';
-
+import foxGif from '../../public/lovable-uploads/finnickPeekingBottom-cropped.gif'
 interface FeatureCardProps {
   icon: React.ReactNode;
   title: string;
@@ -112,6 +112,16 @@ const Features = () => {
     },
   };
 
+  const [showGif, setShowGif] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowGif(true);
+    }, 8000); // 3 seconds delay
+
+    return () => clearTimeout(timer); // cleanup on unmount
+  }, []);
+
   return (
     <section
       className="py-12 sm:py-16 md:py-20 pb-0 relative bg-background"
@@ -124,7 +134,7 @@ const Features = () => {
             <div className="flex items-center gap-4 mb-6">
               <div className="pulse-chip flex items-center">
                 <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 dark:bg-pulse-600 text-white mr-2">
-                  05
+                  04
                 </span>
                 <span className="text-pulse-500">Features</span>
               </div>
@@ -159,6 +169,14 @@ const Features = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          <div  className='relative'>
+            {showGif && (
+        <img 
+          src="/lovable-uploads/finnickPeekingBottom-cropped.gif" 
+          alt="Finnick peeking" 
+          className="w-[150px] block md:hidden absolute right-0 -top-28" 
+        />
+      )}
           <FeatureCard
             icon={
               <svg
@@ -178,6 +196,7 @@ const Features = () => {
             description="Expert in building scalable applications with React 18, TypeScript, and modern JavaScript frameworks."
             index={0}
           />
+          </div>
           <FeatureCard
             icon={
               <svg
@@ -198,6 +217,14 @@ const Features = () => {
             description="Creating beautiful, mobile-first designs that work seamlessly across all devices and screen sizes."
             index={1}
           />
+          <div className='relative'>
+            {showGif && (
+        <img 
+          src="/lovable-uploads/finnickPeekingBottom-cropped.gif" 
+          alt="Finnick peeking" 
+          className="w-[150px] hidden md:block  absolute -top-28" 
+        />
+      )}
           <FeatureCard
             icon={
               <svg
@@ -216,6 +243,7 @@ const Features = () => {
             description="Focused on web performance, Core Web Vitals, and creating lightning-fast user experiences."
             index={2}
           />
+          </div>
           <FeatureCard
             icon={
               <svg

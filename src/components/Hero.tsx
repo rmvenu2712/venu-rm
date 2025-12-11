@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react";
 import LottieAnimation from "./LottieAnimation";
 import SplitText from "./SplitText";
 import StarBorder from "./StarBorder";
+import FollowingEyes from "./FollowingEyes";
+import image from '../../public/lovable-uploads/3d-animated-boy-holding-youtube-icon-his-hand_1173242-1162-removebg-preview.png'
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -127,6 +129,52 @@ const Hero = () => {
       button.removeEventListener('mousemove', handleMouseMove);
     };
   }, [isMobile]);
+
+
+  const texts = [
+    "Frontend developer specializing in React, TypeScript, and modern web technologies.",
+    "Building fast, beautiful, and responsive web experiences.",
+    "Passionate about clean code and great user interfaces.",
+    // Add more phrases here...
+  ];
+
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+    const currentFullText = texts[currentTextIndex];
+
+    const typingSpeed = 50;   // Speed when typing (ms per char)
+    const deletingSpeed = 30; // Speed when deleting (ms per char)
+    const pauseAfterType = 2000; // Pause after finishing typing (ms)
+    const pauseAfterDelete = 500; // Pause before starting next text
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && charIndex < currentFullText.length) {
+        // Typing phase
+        setDisplayedText(currentFullText.substring(0, charIndex + 1));
+        setCharIndex(charIndex + 1);
+      } else if (isDeleting && charIndex > 0) {
+        // Deleting phase
+        setDisplayedText(currentFullText.substring(0, charIndex - 1));
+        setCharIndex(charIndex - 1);
+      } else if (!isDeleting && charIndex === currentFullText.length) {
+        // Finished typing → pause then start deleting
+        setTimeout(() => setIsDeleting(true), pauseAfterType);
+      } else if (isDeleting && charIndex === 0) {
+        // Finished deleting → move to next text
+        setIsDeleting(false);
+        setCurrentTextIndex((prev) => (prev + 1) % texts.length);
+        setTimeout(() => {}, pauseAfterDelete);
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, currentTextIndex, texts]);
+
+
   
   return (
     <section 
@@ -142,7 +190,7 @@ const Hero = () => {
     >
       <div className="absolute -top-[10%] -right-[5%] w-1/2 h-[70%] bg-pulse-gradient opacity-20 blur-3xl rounded-full"></div>
       
-      <div className="container px-0 sm:px-6 lg:px-8" ref={containerRef}>
+      <div className="container px-0 py-3 sm:px-6 lg:px-8" ref={containerRef}>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
           <div className="w-full lg:w-1/2">
             <div className="flex items-center gap-4 mb-6">
@@ -159,9 +207,9 @@ const Hero = () => {
             </h1>
             
             <p 
-              className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg text-left"
+              className="section-subtitle mt-3 h-[40px] sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in dark:text-white text-gray-950 font-normal text-base sm:text-lg text-left"
             >
-              Frontend developer specializing in React, TypeScript, and modern web technologies.
+             {displayedText}
             </p>
             
             <div 
@@ -169,7 +217,7 @@ const Hero = () => {
             >
               <a 
                 ref={buttonRef}
-                href="#contact" 
+                href="/projects" 
                 className="flex items-center justify-center group w-full sm:w-auto text-center transition-all duration-300 ease-out cursor-pointer text-sm leading-5 px-6 py-4 rounded-full border border-white text-white bg-[#FE5C02] font-medium hover:shadow-lg active:scale-95"
               >
                 View My Work
@@ -191,15 +239,12 @@ const Hero = () => {
             ) : (
               <>
                 <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
-                <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
-                  <img 
-                    ref={imageRef} 
-                    src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
-                    alt="Atlas Robot" 
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-out" 
-                    style={{ transformStyle: 'preserve-3d' }} 
-                  />
-                  <div className="absolute inset-0 bg-[url('/hero-image.jpg')] bg-cover bg-center mix-blend-overlay opacity-50"></div>
+                <div className="relative transition-all duration-500 ease-out overflow-hidden">
+                                 <div className="relative h-fit w-fit">
+                     <img src={image} className="w-[450px]"  alt='image' />
+                    <FollowingEyes/>
+                </div>
+                  {/* <div className="absolute inset-0 bg-[url('/hero-image.jpg')] bg-cover bg-center mix-blend-overlay opacity-50"></div> */}
                 </div>
               </>
             )}

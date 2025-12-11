@@ -1,13 +1,28 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FallingText from "./FallingText";
+import catgif from '../../public/lovable-uploads/clemGettingStarted-cropped-oneLoop.gif'
 
 const MadeByHumans = () => {
+      const [showGif, setShowGif] = useState(false);
+    
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          setShowGif(true);
+        }, 8000); // 3 seconds delay
+    
+        return () => clearTimeout(timer); // cleanup on unmount
+      }, []);
+
   return <section id="made-by-humans" className="w-full bg-background py-0">
-      <div className="section-container opacity-0 animate-on-scroll pb-2">
+      <div className="section-container opacity-0 animate-on-scroll pb-0">
+
         {/* Removed the pulse-chip button/element that was here */}
-        
+        <div className="relative">
+     {showGif &&  <div className="absolute z-50 -top-[71px] right-0"><img className="w-[150px]" src={catgif}/></div>}
+
         <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden relative mt-6 sm:mt-8">
+
           <div className="bg-no-repeat bg-cover bg-center p-4 sm:p-5 min-h-[250px] sm:min-h-[350px] flex flex-col justify-between" style={{
           backgroundImage: "url('/background-section3.png')"
         }}>
@@ -31,6 +46,7 @@ const MadeByHumans = () => {
             {/* Background box at the bottom with overflow */}
             <div className="w-[120%] bg-background h-10 rounded-t-lg absolute left-[-10%] bottom-0"></div>
           </div>
+        </div>
         </div>
       </div>
     </section>;
