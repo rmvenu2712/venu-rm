@@ -21,7 +21,7 @@ const Projects = () => {
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       image: "/project(4).png", // Replace with actual image
       category: "Frontend",
-      liveUrl: "https://prettygurls.netlify.app",
+      liveUrl: "https://beauty-shop-landing.pages.dev/",
       githubUrl: "https://github.com/rmvenu2712/Beauty-Shop-Landing"
     },
     {
@@ -31,8 +31,8 @@ const Projects = () => {
       tech: ["React", "Bootstrap"],
       image: "/project(5).png", // Replace with actual image
       category: "Frontend",
-      liveUrl: "https://kural-tail.netlify.app/",
-      githubUrl: "https://github.com/rmvenu2712/Thirukkural-Generator-"
+      liveUrl: "https://thirukkural-generator.pages.dev/",
+      githubUrl: "https://github.com/rmvenu2712/Thirukkural-Generator"
     },
     {
       id: "5",

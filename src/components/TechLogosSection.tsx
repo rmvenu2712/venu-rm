@@ -12,7 +12,8 @@ import {
   SiTypescript, 
   SiMysql, 
   SiGit, 
-  SiGithub
+  SiGithub,
+  SiCloudflare
 } from 'react-icons/si';
 
 const ANIMATION_CONFIG = {
@@ -376,6 +377,7 @@ const TechLogosSection = () => {
     { node: <SiNetlify size={60} className="text-purple-500 dark:text-purple-400" />, title: "Netlify", href: "https://www.netlify.com" },
     { node: <SiGit size={60} className="text-orange-600 dark:text-orange-500" />, title: "Git", href: "https://git-scm.com" },
     { node: <SiGithub size={60} className="text-black dark:text-white" />, title: "GitHub", href: "https://github.com" },
+    { node: <SiCloudflare size={60} className="text-orange-500 dark:text-orange-400" />, title: "Cloudflare", href: "https://www.cloudflare.com" },
   ];
 
   return (

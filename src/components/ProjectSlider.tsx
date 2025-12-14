@@ -18,7 +18,7 @@ const ProjectSlider = () => {
       description: "A modern, elegant landing page for a women's beauty products store. Fully responsive with smooth animations and call-to-action sections.",
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       image: "/project(4).png",
-      liveUrl: "https://prettygurls.netlify.app",
+      liveUrl: "https://beauty-shop-landing.pages.dev/",
       githubUrl: "https://github.com/rmvenu2712/Beauty-Shop-Landing"
     },
     {
@@ -27,7 +27,7 @@ const ProjectSlider = () => {
       description: "An interactive web app that fetches and displays random Thirukural verses with explanations using a public API. Built with React and styled using Bootstrap.",
       tech: ["React", "Bootstrap"],
       image: "/project(5).png",
-      liveUrl: "https://kural-tail.netlify.app/",
+      liveUrl: "https://thirukkural-generator.pages.dev/",
       githubUrl: "https://github.com/rmvenu2712/Thirukkural-Generator-"
     },
     {
@@ -56,15 +56,6 @@ const ProjectSlider = () => {
       image: "/projects (1).webp",
       liveUrl: "https://bmicalculater001.netlify.app/",
       githubUrl: "https://github.com/rmvenu2712/Orgbmi"
-    },
-    {
-      id: "6",
-      title: "React CRUD Operations",
-      description: "A responsive CRUD application demonstrating Create, Read, Update, and Delete operations in React. Ideal for learning state management and component lifecycle.",
-      tech: ["React", "Bootstrap"],
-      image: "/projects (1).gif",
-      liveUrl: "https://recproj.netlify.app/",
-      githubUrl: "https://github.com/rmvenu2712/Reactproject"
     }
   ];
 
