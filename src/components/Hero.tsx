@@ -19,10 +19,10 @@ const Hero = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -34,47 +34,47 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    // Skip effect on mobile
-    if (isMobile) return;
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current || !imageRef.current) return;
-      
-      const {
-        left,
-        top,
-        width,
-        height
-      } = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - left) / width - 0.5;
-      const y = (e.clientY - top) / height - 0.5;
+    if (!buttonRef.current || isMobile) return;
 
-      imageRef.current.style.transform = `perspective(1000px) rotateY(${x * 2.5}deg) rotateX(${-y * 2.5}deg) scale3d(1.02, 1.02, 1.02)`;
-    };
-    
-    const handleMouseLeave = () => {
-      if (!imageRef.current) return;
-      imageRef.current.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
-    };
-    
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener("mousemove", handleMouseMove);
-      container.addEventListener("mouseleave", handleMouseLeave);
-    }
-    
-    return () => {
-      if (container) {
-        container.removeEventListener("mousemove", handleMouseMove);
-        container.removeEventListener("mouseleave", handleMouseLeave);
+    const button = buttonRef.current;
+    const magnetRadius = 150; // Pixels around button that trigger effect
+    let isInRange = false;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = button.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Calculate distance from center
+      const distanceX = e.clientX - centerX;
+      const distanceY = e.clientY - centerY;
+      const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+      if (distance < magnetRadius) {
+        isInRange = true;
+        const strength = 0.3; // Adjust for pull intensity
+        const deltaX = distanceX * strength;
+        const deltaY = distanceY * strength;
+
+        button.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      } else if (isInRange) {
+        isInRange = false;
+        button.style.transform = 'translate(0, 0)';
       }
     };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
   }, [isMobile]);
-  
+
+
   useEffect(() => {
     // Skip parallax on mobile
     if (isMobile) return;
-    
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const elements = document.querySelectorAll('.parallax');
@@ -85,7 +85,7 @@ const Hero = () => {
         element.style.setProperty('--parallax-y', `${yPos}px`);
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
@@ -167,7 +167,7 @@ const Hero = () => {
         // Finished deleting → move to next text
         setIsDeleting(false);
         setCurrentTextIndex((prev) => (prev + 1) % texts.length);
-        setTimeout(() => {}, pauseAfterDelete);
+        setTimeout(() => { }, pauseAfterDelete);
       }
     }, isDeleting ? deletingSpeed : typingSpeed);
 
@@ -175,13 +175,13 @@ const Hero = () => {
   }, [charIndex, isDeleting, currentTextIndex, texts]);
 
 
-  
+
   return (
-    <section 
+    <section
       className={cn(
         "overflow-hidden relative bg-cover",
         isMobile ? "py-24 px-4 pb-10" : "py-32 px-5 pb-16"
-      )} 
+      )}
       id="hero"
       style={{
         backgroundImage: 'url("/Header-background.png")',
@@ -189,7 +189,7 @@ const Hero = () => {
       }}
     >
       <div className="absolute -top-[10%] -right-[5%] w-1/2 h-[70%] bg-pulse-gradient opacity-20 blur-3xl rounded-full"></div>
-      
+
       <div className="container px-0 py-3 sm:px-6 lg:px-8" ref={containerRef}>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
           <div className="w-full lg:w-1/2">
@@ -200,37 +200,41 @@ const Hero = () => {
               </div>
             </div>
 
-            <h1 
-              className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
+            <h1
+              className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in"
             >
               <SplitText text="Crafting Digital Experiences" />
             </h1>
-            
-            <p 
+
+            <p
               className="section-subtitle mt-3 h-[40px] sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in dark:text-white text-gray-950 font-normal text-base sm:text-lg text-left"
             >
-             {displayedText}
+              {displayedText}
             </p>
-            
-            <div 
-              className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" 
+
+            <div
+              className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in"
             >
-              <a 
+              <a
+                style={{ transition: 'transform 0.15s ease-out' }}
                 ref={buttonRef}
-                href="/projects" 
+                href="/resume"
+                // href="/venu_resume.pdf"
+                // download="venu_resume.pdf"
                 className="flex items-center justify-center group w-full sm:w-auto text-center transition-all duration-300 ease-out cursor-pointer text-sm leading-5 px-6 py-4 rounded-full border border-white text-white bg-[#FE5C02] font-medium hover:shadow-lg active:scale-95"
               >
-                View My Work
+                View My Resume
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
+
             </div>
           </div>
-          
+
           <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0">
             {lottieData ? (
               <div className="relative z-10 animate-fade-in">
-                <LottieAnimation 
-                  animationPath={lottieData} 
+                <LottieAnimation
+                  animationPath={lottieData}
                   className="w-full h-auto max-w-lg mx-auto"
                   loop={true}
                   autoplay={true}
@@ -240,10 +244,10 @@ const Hero = () => {
               <>
                 <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
                 <div className="relative transition-all duration-500 ease-out overflow-hidden">
-                                 <div className="relative h-fit w-fit">
-                     <img src={image} className="w-[450px]"  alt='image' />
-                    <FollowingEyes/>
-                </div>
+                  <div className="relative h-fit w-fit">
+                    <img src={image} className="w-[450px]" alt='image' />
+                    <FollowingEyes />
+                  </div>
                   {/* <div className="absolute inset-0 bg-[url('/hero-image.jpg')] bg-cover bg-center mix-blend-overlay opacity-50"></div> */}
                 </div>
               </>
@@ -251,7 +255,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="hidden lg:block absolute bottom-0 left-1/4 w-64 h-64 bg-pulse-100/30 rounded-full blur-3xl -z-10 parallax" data-speed="0.05"></div>
     </section>
   );

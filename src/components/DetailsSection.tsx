@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion'; // Add framer-motion: npm install framer-motion
 import pandaimage from '../../public/lovable-uploads/brunoPeekingBottom-cropped.gif'
-import { SiGmail, SiInstagram, SiLinkedin, SiMailchimp, SiMaildotcom, SiWhatsapp } from "react-icons/si";
+import { SiGithub, SiGmail, SiInstagram, SiLinkedin, SiMailchimp, SiMaildotcom, SiWhatsapp } from "react-icons/si";
 
 interface DetailsSectionProps {
   id?: string;
@@ -201,6 +201,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 {/* <a href=""><SiInstagram size={20} /></a> */}
                 <a target="_blank" href="https://api.whatsapp.com/send?phone=916385538151&text=Hi%20Venu,%20nice%20to%20meet%20you.%20Can%20we%20connect"><SiWhatsapp size={20} /></a>
                 <a href="mailto:rmvenu001@gmail.com"><SiGmail size={20} /></a>
+                <a target="_blank" href="https://github.com/rmvenu2712"><SiGithub size={20} /></a>
               </motion.div>
             </div>
           </div>

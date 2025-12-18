@@ -12,6 +12,27 @@ import Autoplay from "embla-carousel-autoplay";
 
 const ProjectSlider = () => {
   const projects = [
+      {
+  id: "8",
+  title: "E-Commerce Fashion Website",
+  description: "A full-featured e-commerce website built with Next.js and Tailwind CSS. Includes Razorpay test payment integration, dynamic theme switching, and category-based navigation for Men, Women, and Kids.",
+  tech: ["Next.js", "Tailwind CSS", "TypeScript", "Razorpay"],
+  image: "/ecom-wear.png", // Replace with actual image
+  category: "Frontend",
+  liveUrl: "https://ecom-wear.pages.dev",
+  githubUrl: "https://github.com/rmvenu2712/ecom-wear"
+}
+,
+{
+  id: "9",
+  title: "WebOpti Tools",
+  description: "An AI-powered SEO platform providing professional tools for web performance analysis, optimization, and compliance with the latest SEO best practices and updates.",
+  tech: ["Next.js", "Tailwind CSS", "TypeScript"],
+  image: "/webopti-tools.png", // Replace with actual image
+  category: "Frontend",
+  liveUrl: "https://webopti-tools.pages.dev/",
+  githubUrl: "https://github.com/rmvenu2712/webopti-tools"
+},
     {
       id: "3",
       title: "Beauty Shop Landing Page",
@@ -120,7 +141,7 @@ const ProjectSlider = () => {
                     className="h-full"
                   >
                     <div className="group relative overflow-hidden border border-border/50 bg-card/80 backdrop-blur-xl hover:border-primary/50 transition-all duration-500 h-full rounded-2xl shadow-lg hover:shadow-2xl">
-                      <div className="relative overflow-hidden aspect-[4/4]">
+                      <div className="relative overflow-hidden aspect-[4/3]">
                         <motion.img
                           src={project.image}
                           alt={project.title}

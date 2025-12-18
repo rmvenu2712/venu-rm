@@ -13,6 +13,17 @@ const Projects = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const projects = [
+    {
+  id: "8",
+  title: "E-Commerce Fashion Website",
+  description: "A full-featured e-commerce website built with Next.js and Tailwind CSS. Includes Razorpay test payment integration, dynamic theme switching, and category-based navigation for Men, Women, and Kids.",
+  tech: ["Next.js", "Tailwind CSS", "TypeScript", "Razorpay"],
+  image: "/ecom-wear.png", // Replace with actual image
+  category: "Full Stack",
+  liveUrl: "https://your-ecommerce-site.pages.dev/",
+  githubUrl: "https://github.com/rmvenu2712/your-ecommerce-repo"
+}
+,
 
     {
       id: "3",
@@ -23,8 +34,7 @@ const Projects = () => {
       category: "Frontend",
       liveUrl: "https://beauty-shop-landing.pages.dev/",
       githubUrl: "https://github.com/rmvenu2712/Beauty-Shop-Landing"
-    },
-    {
+    }, {
       id: "4",
       title: "Thirukural Generator",
       description: "An interactive web app that fetches and displays random Thirukural verses with explanations using a public API. Built with React and styled using Bootstrap.",
@@ -69,7 +79,7 @@ const Projects = () => {
       title: "React CRUD Operations",
       description: "A responsive CRUD application demonstrating Create, Read, Update, and Delete operations in React. Ideal for learning state management and component lifecycle.",
       tech: ["React", "Bootstrap"],
-      image: "/projects (1).gif", // Replace with actual image
+      image: "/react-crud.png", // Replace with actual image
       category: "Frontend",
       liveUrl: "https://recproj.netlify.app/",
       githubUrl: "https://github.com/rmvenu2712/Reactproject"
