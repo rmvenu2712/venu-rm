@@ -38,18 +38,21 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed  left-0 z-50 rounded-full  w-fit mx-auto right-0 px-4 pr-2 py-2 transition-all duration-300 h-fit",
+        "fixed  left-0 z-50 rounded-full  w-full  mx-auto right-0 px-4 pr-2 py-2 transition-all duration-300 h-fit",
+        
+      )}
+    >
+      <div className=" flex items-center w-full justify-between">
+
+        <nav className="flex mt-2 items-start w-full justify-between px-4 space-x-8">
+          <a 
+          href="/" 
+          className={cn(
+        "rounded-full  w-fit  px-2 py-2 transition-all duration-300 h-fit",
         isScrolled 
           ? "top-3 dark:bg-gray-100/10 bg-gray-950/10 backdrop-blur-md shadow-sm" 
           : " top-3"
       )}
-    >
-      <div className=" flex items-center justify-between ">
-
-        <nav className="flex space-x-8">
-          <a 
-          href="/" 
-          className=""
           aria-label="VENU"
         >
           <img 
@@ -58,6 +61,7 @@ const Navbar = () => {
             className="h-10" 
           />
         </a>
+        <div>
           {/* <a 
             href="/" 
             className="nav-link hidden md:block"
@@ -67,6 +71,7 @@ const Navbar = () => {
           {/* <a href="/projects" className="nav-link">Projects</a>
           <a href="/blog" className="nav-link">Blog</a> */}
                 <ThemeToggle  />
+                </div>
         </nav>
 
       </div>
