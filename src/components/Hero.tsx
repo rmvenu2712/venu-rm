@@ -218,9 +218,10 @@ const Hero = () => {
               <a
                 style={{ transition: 'transform 0.15s ease-out' }}
                 ref={buttonRef}
-                href="/resume"
-                // href="/venu_resume.pdf"
-                // download="venu_resume.pdf"
+                href="/venu_reaume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                // download="venu_reaume.pdf"
                 className="flex items-center justify-center group w-full sm:w-auto text-center transition-all duration-300 ease-out cursor-pointer text-sm leading-5 px-6 py-4 rounded-full border border-white text-white bg-[#FE5C02] font-medium hover:shadow-lg active:scale-95"
               >
                 View My Resume

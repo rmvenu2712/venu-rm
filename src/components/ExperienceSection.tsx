@@ -19,12 +19,12 @@ const ExperienceSection = () => {
     },
   };
 
-    const contentVariants: Variants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.5,
         ease: 'easeOut'
       }
@@ -35,7 +35,7 @@ const ExperienceSection = () => {
     {
       year: "2023 - 2025",
       month: "Dec 2023 - Present",
-      title: "Junior Frontend Developer",
+      title: "Frontend Developer",
       company: "Vilvabusiness",
       location: "Kalyani ammal Street, Ambatur, Chennai",
       companyUrl: "https://vilvabusiness.com",
@@ -65,7 +65,7 @@ const ExperienceSection = () => {
     }
   ];
   const [selectedYear, setSelectedYear] = useState<string | null>("2023 - 2025");
-    const handleYearClick = (year: string) => {
+  const handleYearClick = (year: string) => {
     setSelectedYear(selectedYear === year ? null : year);
   };
 
@@ -192,7 +192,7 @@ const ExperienceSection = () => {
                       <p className="text-muted-foreground mb-4">
                         {experience.content}
                       </p>
-                      
+
                       {experience.certificationUrl && (
                         <div className="mb-4">
                           <a
@@ -227,16 +227,15 @@ const ExperienceSection = () => {
 
 
 
-                {/* Mobile Year Selection */}
+        {/* Mobile Year Selection */}
         <div className="lg:hidden flex justify-center gap-4 mb-8">
           {experiences.map((experience, index) => (
             <motion.button
               key={index}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-                selectedYear === experience.year
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${selectedYear === experience.year
                   ? 'bg-primary text-white'
                   : 'bg-primary/10 text-primary hover:bg-primary/20'
-              }`}
+                }`}
               onClick={() => handleYearClick(experience.year)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -257,9 +256,8 @@ const ExperienceSection = () => {
             {experiences.map((experience, index) => (
               <motion.div
                 key={index}
-                className={`relative mb-12 last:mb-0 ${
-                  selectedYear && selectedYear !== experience.year ? 'hidden lg:block' : ''
-                }`}
+                className={`relative mb-12 last:mb-0 ${selectedYear && selectedYear !== experience.year ? 'hidden lg:block' : ''
+                  }`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -328,7 +326,7 @@ const ExperienceSection = () => {
                       <p className="text-muted-foreground mb-4">
                         {experience.content}
                       </p>
-                      
+
                       {experience.certificationUrl && (
                         <div className="mb-4">
                           <a
