@@ -41,7 +41,6 @@ const ExperienceSection = () => {
       company: "Vilva Business",
       location: "Kalyani ammal Street, Ambatur, Chennai",
       companyUrl: "https://vilvabusiness.com",
-      certificationUrl: "https://novitech.com/certificate/12345",
       content: "Vilva Business is a trusted fintech-focused company that builds secure financial applications, CRM and ERP platforms, and client-facing software products using React.js/Next.js frontends and Laravel/MySQL backends. Delivered 20+ full-stack applications across fintech, CRM, e-commerce, and ed-tech domains.",
       projects: [
         "Engineered fintech dashboards for a payment gateway (merchant onboarding, UPI collections, instant payouts)",
@@ -57,7 +56,6 @@ const ExperienceSection = () => {
       company: "Novi Tech",
       location: "Remote",
       companyUrl: "https://novitech.com",
-      certificationUrl: "https://novitech.com/certificate/12345",
       content: "Completed a certified 2-month internship program focused on frontend development. Gained hands-on training in React, TypeScript, and modern UI frameworks while working on guided team projects.",
       projects: [
         "Developed a demo e-commerce website as part of training",
@@ -202,19 +200,6 @@ const ExperienceSection = () => {
                         {experience.content}
                       </p>
 
-                      {experience.certificationUrl && (
-                        <div className="mb-4">
-                          <a
-                            href={experience.certificationUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:underline text-sm font-semibold"
-                          >
-                            View Certification
-                          </a>
-                        </div>
-                      )}
-
                       <div>
                         <h4 className="text-sm font-semibold text-foreground mb-2">Key Projects:</h4>
                         <ul className="space-y-1">
@@ -335,19 +320,6 @@ const ExperienceSection = () => {
                       <p className="text-muted-foreground mb-4">
                         {experience.content}
                       </p>
-
-                      {experience.certificationUrl && (
-                        <div className="mb-4">
-                          <a
-                            href={experience.certificationUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:underline text-sm font-semibold"
-                          >
-                            View Certification
-                          </a>
-                        </div>
-                      )}
 
                       <div>
                         <h4 className="text-sm font-semibold text-foreground mb-2">Key Projects:</h4>

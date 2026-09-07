@@ -7,13 +7,9 @@ import SpecsSection from "@/components/SpecsSection";
 import DetailsSection from "@/components/DetailsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import Features from "@/components/Features";
-import Testimonials from "@/components/Testimonials";
-import Newsletter from "@/components/Newsletter";
 import MadeByHumans from "@/components/MadeByHumans";
-import Footer from "@/components/Footer";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import ScrollProgress from "@/components/ScrollProgress";
-import CursorRibbons from "@/components/CursorRibbons";
 import { TechLogosSection } from "@/components/TechLogosSection";
 
 import OverViewProjects from "@/components/OverViewProjects";
@@ -77,9 +73,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* Cursor Ribbons Effect */}
-      {/* <CursorRibbons /> */}
-      
       {/* Scroll Progress Bar */}
       <ScrollProgress />
       
@@ -95,14 +88,11 @@ const Index = () => {
         <TechLogosSection/>
         
         <OverViewProjects/>
-        {/* <Testimonials /> */}
-        {/* <Newsletter /> */}
 
-                <SpecsSection />
+        <SpecsSection />
         <DetailsSection id="contact" />
         <MadeByHumans />
       </main>
-      {/* <Footer /> */}
     </div>
   );
 };
