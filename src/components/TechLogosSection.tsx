@@ -1,19 +1,24 @@
 import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
-import { 
-  SiHtml5, 
-  SiCss3, 
-  SiJavascript, 
-  SiBootstrap, 
-  SiTailwindcss, 
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiBootstrap,
+  SiTailwindcss,
   SiNetlify,
-  SiFramer, 
-  SiNextdotjs, 
-  SiReact, 
-  SiTypescript, 
-  SiMysql, 
-  SiGit, 
+  SiFramer,
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiMysql,
+  SiGit,
   SiGithub,
-  SiCloudflare
+  SiCloudflare,
+  SiPhp,
+  SiLaravel,
+  SiNodedotjs,
+  SiPostman,
+  SiFigma
 } from 'react-icons/si';
 
 const ANIMATION_CONFIG = {
@@ -366,18 +371,27 @@ const TechLogosSection = () => {
     { node: <SiReact size={60} className="text-blue-500 dark:text-blue-400" />, title: "React", href: "https://react.dev" },
     { node: <SiNextdotjs size={60} className="text-black dark:text-white" />, title: "Next.js", href: "https://nextjs.org" },
     
-    // Languages & Tools
+    // Languages
     { node: <SiTypescript size={60} className="text-blue-600 dark:text-blue-500" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+    { node: <SiPhp size={60} className="text-indigo-500 dark:text-indigo-400" />, title: "PHP", href: "https://www.php.net" },
+
+    // Backend & Database
+    { node: <SiLaravel size={60} className="text-red-600 dark:text-red-500" />, title: "Laravel", href: "https://laravel.com" },
+    { node: <SiNodedotjs size={60} className="text-green-600 dark:text-green-500" />, title: "Node.js", href: "https://nodejs.org" },
     { node: <SiMysql size={60} className="text-orange-600 dark:text-orange-500" />, title: "MySQL", href: "https://www.mysql.com" },
-    
+
     // Animation & 3D
     { node: <SiFramer size={60} className="text-pink-500 dark:text-pink-400" />, title: "Framer Motion", href: "https://www.framer.com/motion" },
-    
+
     // Deployment & Version Control
     { node: <SiNetlify size={60} className="text-purple-500 dark:text-purple-400" />, title: "Netlify", href: "https://www.netlify.com" },
     { node: <SiGit size={60} className="text-orange-600 dark:text-orange-500" />, title: "Git", href: "https://git-scm.com" },
     { node: <SiGithub size={60} className="text-black dark:text-white" />, title: "GitHub", href: "https://github.com" },
     { node: <SiCloudflare size={60} className="text-orange-500 dark:text-orange-400" />, title: "Cloudflare", href: "https://www.cloudflare.com" },
+
+    // Tools
+    { node: <SiPostman size={60} className="text-orange-500 dark:text-orange-400" />, title: "Postman", href: "https://www.postman.com" },
+    { node: <SiFigma size={60} className="text-pink-500 dark:text-pink-400" />, title: "Figma", href: "https://www.figma.com" },
   ];
 
   return (

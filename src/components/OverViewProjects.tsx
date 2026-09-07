@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import SplitText from './SplitText';
 import { ArrowRight } from 'lucide-react';
 import ProjectSlider from './ProjectSlider';
+import FollowingEyes2 from './FollowingEyes2';
+import projectsCharacter from '../../public/lovable-uploads/chareterimage_1.png'
 
 const OverViewProjects = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -89,7 +91,14 @@ const OverViewProjects = () => {
 
   return (
     <div className='container'>
-      <div className="mb-10 sm:mb-16">
+      <div className="relative mb-10 sm:mb-16">
+        <div className="absolute -top-[88px] right-4 lg:right-10 w-36 z-10 pointer-events-none select-none">
+          <div className="relative">
+            <img src={projectsCharacter} alt="" className="w-full h-auto block" />
+            <FollowingEyes2 leftPercent={46.5} topPercent={24} />
+          </div>
+        </div>
+
         <div className="mb-2 md:mb-3">
           <div className="flex items-center gap-4 mb-6">
             <div className="pulse-chip flex items-center">

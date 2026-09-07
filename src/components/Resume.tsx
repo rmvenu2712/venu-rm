@@ -3,22 +3,16 @@ import { MapPin, Mail, Phone, Globe, Linkedin, Github, ExternalLink } from 'luci
 const ResumePage = () => {
     const educationData = [
   {
-    degree: "Bachelor of Engineering - Computer Science",
-    institution: "Prince Shri Venkateshwara Padmavathy Engineering College",
-    score: "CGPA: 7.20",
-    year: "2020 - 2024"
+    degree: "M.Sc. Computer Science",
+    institution: "Annai Velankanni College, Kanyakumari, MS University",
+    score: "CGPA: 8.07",
+    year: "2023"
   },
   {
-    degree: "HSC",
-    institution: "Karpaga Vinayaga Matric Hr.Sec School",
-    score: "Percentage: 56%",
-    year: "2019 - 2020"
-  },
-  {
-    degree: "SSLC",
-    institution: "Karpaga Vinayaga Matric Hr.Sec School",
-    score: "Percentage: 70%",
-    year: "2017 - 2018"
+    degree: "B.Sc. Computer Science",
+    institution: "Annai Velankanni College, Kanyakumari, MS University",
+    score: "CGPA: 7.06",
+    year: "2021"
   }
 ];
 
@@ -63,28 +57,28 @@ const projectsData = [
           <MapPin className="w-4 h-4 text-primary" />
           <span>Chennai, India</span>
         </div>
-        <a href="mailto:Venurm07@gmail.com" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+        <a href="mailto:rmvenu001@gmail.com" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
           <Mail className="w-4 h-4 text-primary" />
-          <span>Venurm07@gmail.com</span>
+          <span>rmvenu001@gmail.com</span>
         </a>
         <div className="flex items-center gap-1.5 text-muted-foreground">
           <Phone className="w-4 h-4 text-primary" />
-          <span>+91 6383387547</span>
+          <span>+91 6385538151</span>
         </div>
-        <a href="https://venu-portfolio-psi.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+        <a href="https://venu-rm.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
           <Globe className="w-4 h-4 text-primary" />
-          <span>venu-portfolio-psi.vercel.app</span>
+          <span>venu-rm.vercel.app</span>
         </a>
       </div>
 
       <div className="flex gap-4 text-sm">
-        <a href="https://linkedin.com/in/venu-r-m-90b76a1b8" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+        <a href="https://linkedin.com/in/venu-rm" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
           <Linkedin className="w-4 h-4 text-primary" />
-          <span>linkedin.com/in/venu-r-m-90b76a1b8</span>
+          <span>linkedin.com/in/venu-rm</span>
         </a>
-        <a href="https://github.com/VENURM" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+        <a href="https://github.com/venu-rm" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
           <Github className="w-4 h-4 text-primary" />
-          <span>github.com/VENURM</span>
+          <span>github.com/venu-rm</span>
         </a>
       </div>
     </header>
@@ -93,14 +87,16 @@ const projectsData = [
 
      <section className="mb-6 border-l-4 border-primary pl-4">
       <p className="text-foreground leading-relaxed">
-        I am a <span className="highlight">Frontend Developer</span> specializing in building responsive and user-friendly interfaces using{' '}
-        <span className="highlight">HTML</span>, <span className="highlight">CSS</span>, <span className="highlight">JavaScript</span>,{' '}
-        <span className="highlight">React</span>, and <span className="highlight">Next Js</span>. I focus on clean code, good user experience, and modern design with{' '}
-        <span className="highlight">Bootstrap</span> and <span className="highlight">Tailwind CSS</span>. I'm eager to grow and contribute to impactful projects.
+        I am a <span className="highlight">Full-Stack Developer</span> with 3 years of experience building performant, SEO-friendly web
+        applications with <span className="highlight">React.js</span>/<span className="highlight">Next.js</span> frontends and{' '}
+        <span className="highlight">Laravel</span>/<span className="highlight">MySQL</span> backends. I've built custom CRM portals, admin
+        dashboards, and client-facing platforms with complex data workflows, and improved page load performance by up to{' '}
+        <span className="highlight">90%</span> with code splitting and optimized APIs. Experienced with REST API implementation, secure
+        auth (<span className="highlight">JWT/OAuth</span>), and automating business processes with <span className="highlight">MCP-based AI</span>.
       </p>
-      <a 
-        href="https://venu-portfolio-psi.vercel.app" 
-        target="_blank" 
+      <a
+        href="https://venu-rm.vercel.app"
+        target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1.5 text-primary hover:underline mt-2 text-sm font-medium"
       >
@@ -136,24 +132,18 @@ const projectsData = [
 
 
  <section className="mb-6">
-      <SectionTitle title="Achievements" />
+      <SectionTitle title="Training & Certifications" />
       <ul className="space-y-2 text-foreground">
         <li className="flex gap-2">
           <span className="text-primary">•</span>
           <span>
-            <span className="highlight">1st Place</span> in <span className="highlight">Web Designing</span> competition at Easwari Engineering College - 2024
+            Completed <span className="highlight">Full-Stack Web Development</span> training at Login360, Chennai, gaining practical experience in modern web development.
           </span>
         </li>
         <li className="flex gap-2">
           <span className="text-primary">•</span>
           <span>
-            Completed <span className="highlight">Full Stack Web Development Certification</span> at Besant Technologies - 2024
-          </span>
-        </li>
-        <li className="flex gap-2">
-          <span className="text-primary">•</span>
-          <span>
-            <span className="highlight">Internship</span> at Quasar Binary Pvt. Ltd - 2024
+            Completed a 1-month online <span className="highlight">Front-End Developer internship</span> at Novi Tech, gaining hands-on experience in building responsive user interfaces.
           </span>
         </li>
       </ul>
@@ -165,12 +155,24 @@ const projectsData = [
       <SectionTitle title="Technologies" />
       <div className="space-y-2">
         <p className="text-foreground">
-          <span className="highlight">Languages:</span>{' '}
-          <span className="text-muted-foreground">HTML, CSS, JavaScript, SQL, C</span>
+          <span className="highlight">Frontend:</span>{' '}
+          <span className="text-muted-foreground">React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, HTML5, CSS3, Redux Toolkit</span>
         </p>
         <p className="text-foreground">
-          <span className="highlight">Frameworks / Tools:</span>{' '}
-          <span className="text-muted-foreground">React JS, Next JS, Bootstrap, Tailwind CSS, Material UI, Git</span>
+          <span className="highlight">Backend:</span>{' '}
+          <span className="text-muted-foreground">PHP, Laravel, Node.js, REST APIs, Authentication (JWT/Sanctum)</span>
+        </p>
+        <p className="text-foreground">
+          <span className="highlight">Database:</span>{' '}
+          <span className="text-muted-foreground">MySQL, Database Design, Query Optimization</span>
+        </p>
+        <p className="text-foreground">
+          <span className="highlight">Tools:</span>{' '}
+          <span className="text-muted-foreground">Git, GitHub, Postman, Figma, VS Code, Agile Development</span>
+        </p>
+        <p className="text-foreground">
+          <span className="highlight">AI & Automation:</span>{' '}
+          <span className="text-muted-foreground">MCP Server Development, Anthropic API Integration, Claude Code</span>
         </p>
       </div>
     </section>

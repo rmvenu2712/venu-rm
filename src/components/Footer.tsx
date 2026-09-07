@@ -6,7 +6,7 @@ const Footer = () => {
         <p className="text-center text-muted-foreground text-sm">
           Developed by{" "}
           <span className="text-primary font-semibold">
-            Venu Frontend Developer
+            Venu Full-Stack Developer
           </span>
         </p>
       </div>

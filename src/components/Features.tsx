@@ -1,314 +1,128 @@
-'use client'; // Required for client-side features like Framer Motion
+﻿import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight, Bot, Code2, Database, Gauge, Server, ShieldCheck } from 'lucide-react';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { cn } from '@/lib/utils';
-import { motion, Variants } from 'framer-motion'; // Install: npm install framer-motion
-import SplitText from './SplitText';
-import foxGif from '../../public/lovable-uploads/finnickPeekingBottom-cropped.gif'
-interface FeatureCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  index: number;
-}
-
-const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
-  // Animation variants for the card
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        delay: index * 0.15, // Staggered animation for each card
-        ease: 'easeOut',
-      },
-    },
-    hover: {
-      scale: 1.05, // Slight zoom on hover
-      transition: {
-        duration: 0.3,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  // Animation variants for the icon
-  const iconVariants: Variants = {
-    initial: { scale: 1 },
-    hover: {
-      scale: 1.2, // Larger zoom for the icon on hover
-      rotate: 5, // Subtle rotation for dynamic effect
-      transition: {
-        duration: 0.3,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      whileHover="hover"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={cardVariants}
-      className={cn(
-        'feature-card p-4 sm:p-6 rounded-xl shadow-lg transition-all duration-300',
-        'bg-white dark:bg-gray-800',
-        'hover:bg-gradient-to-br hover:from-pulse-100 hover:to-pulse-200 dark:hover:from-pulse-600 dark:hover:to-pulse-700',
-        'border border-gray-200 dark:border-gray-700'
-      )}
-    >
-      <motion.div
-        variants={iconVariants}
-        className={cn(
-          'rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center mb-4 sm:mb-5',
-          'bg-pulse-100 dark:bg-pulse-600 text-pulse-600 dark:text-pulse-200'
-        )}
-      >
-        {icon}
-      </motion.div>
-      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900 dark:text-gray-100">
-        {title}
-      </h3>
-      <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
-        {description}
-      </p>
-    </motion.div>
-  );
-};
+const skills = [
+  {
+    title: 'Frontend development',
+    description: 'Thoughtful interfaces built for real users. Responsive, accessible, and ready to scale.',
+    technologies: ['React', 'Next.js', 'TypeScript'],
+    icon: Code2,
+  },
+  {
+    title: 'Backend architecture',
+    description: 'Reliable services and well-structured APIs that keep the entire product working together.',
+    technologies: ['PHP', 'Laravel', 'Node.js', 'REST APIs'],
+    icon: Server,
+  },
+  {
+    title: 'Database design',
+    description: 'Clean data models, normalized schemas, and optimized queries for complex workflows.',
+    technologies: ['MySQL', 'Data modeling', 'Query optimization'],
+    icon: Database,
+  },
+  {
+    title: 'Security & authentication',
+    description: 'Secure sign-in flows and protected data across every layer of the application.',
+    technologies: ['JWT', 'OAuth', 'Laravel Sanctum'],
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Performance optimization',
+    description: 'Faster experiences through lean code, efficient APIs, and search-friendly foundations.',
+    technologies: ['Code splitting', 'API optimization', 'SEO'],
+    icon: Gauge,
+  },
+  {
+    title: 'AI & automation',
+    description: 'Connected tools and intelligent workflows that turn repetitive tasks into automated processes.',
+    technologies: ['MCP servers', 'Anthropic API', 'Claude Code'],
+    icon: Bot,
+  },
+];
 
 const Features = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const dividerRef = useRef<HTMLDivElement>(null);
-
-  // Animation variants for the section title, subtitle, and divider
-  const textVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: 0.1,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  // Animation variants for the divider
-  const dividerVariants: Variants = {
-    hidden: { scaleX: 0 },
-    visible: {
-      scaleX: 1,
-      transition: {
-        duration: 0.8,
-        delay: 0.2,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
-  const [showGif, setShowGif] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowGif(true);
-    }, 8000); // 3 seconds delay
-
-    return () => clearTimeout(timer); // cleanup on unmount
-  }, []);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section
-      className="py-12 sm:py-16 md:py-20 pb-0 relative bg-background"
-      id="features"
-      ref={sectionRef}
-    >
-      <div className="section-container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 sm:mb-16">
-          <div className="mb-2 md:mb-3">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="pulse-chip flex items-center">
-                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 dark:bg-pulse-600 text-white mr-2">
-                  04
-                </span>
-                <span className="text-pulse-500">Features</span>
-              </div>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={dividerVariants}
-                ref={dividerRef}
-                className="flex-1 h-[2px] bg-gray-300 dark:bg-gray-600 origin-center"
-              />
-            </div>
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={textVariants}
-              className="section-title text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-1 md:mb-2 text-gray-900 dark:text-gray-100"
-            >
-              <SplitText text="Core Skills & Expertise" />
-            </motion.h2>
+    <section id="features" aria-labelledby="core-skills-title" className="relative scroll-mt-24 bg-background py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-10 flex items-center gap-4 sm:mb-14">
+          <div className="pulse-chip shrink-0">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">04</span>
+            <span>Expertise</span>
           </div>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
+          <motion.div
+            aria-hidden="true"
+            initial={reduceMotion ? false : { scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            variants={textVariants}
-            className="section-subtitle text-gray-600 dark:text-gray-300"
-          >
-            Specialized in modern web development with a focus on performance, accessibility, and user experience.
-          </motion.p>
+            transition={{ duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : 0.2, ease: 'easeInOut' }}
+            className="flex-1 h-[2px] bg-gray-300 dark:bg-gray-600 origin-center"
+          />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          <div  className='relative'>
-            {showGif && (
-        <img 
-          src="/lovable-uploads/finnickPeekingBottom-cropped.gif" 
-          alt="Finnick peeking" 
-          className="w-[150px] block md:hidden absolute right-0 -top-28" 
-        />
-      )}
-          <FeatureCard
-            icon={
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5 sm:w-6 sm:h-6"
-              >
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-              </svg>
-            }
-            title="React & TypeScript"
-            description="Expert in building scalable applications with React 18, TypeScript, and modern JavaScript frameworks."
-            index={0}
-          />
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.4fr] lg:gap-20">
+          <div>
+            <div className="lg:sticky lg:top-28">
+              <h2 id="core-skills-title" className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+                Core skills.<br />
+                <span className="font-playfair font-normal italic text-pulse-600 dark:text-pulse-400">Real impact.</span>
+              </h2>
+              <p className="mt-6 max-w-sm text-base leading-7 text-muted-foreground">
+                I connect the dots between design, engineering, and delivery to build complete web experiences.
+              </p>
+
+              <div className="relative mt-9 overflow-hidden rounded-2xl bg-[#171a20] p-6 text-white sm:p-8">
+                <div aria-hidden="true" className="absolute -right-12 -top-12 h-44 w-44 rounded-full border border-white/10" />
+                <div aria-hidden="true" className="absolute -right-6 -top-6 h-32 w-32 rounded-full border border-white/10" />
+                <div className="relative">
+                  <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-orange-300">
+                    <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
+                    Full-stack mindset
+                  </span>
+                  <p className="mt-7 max-w-[240px] font-display text-2xl leading-snug">Every layer matters.<br />So does every detail.</p>
+                  <div className="mt-7 flex flex-wrap items-center gap-2 border-t border-white/15 pt-5 text-xs text-gray-300">
+                    <span>Interface</span><span aria-hidden="true" className="text-orange-400">/</span>
+                    <span>Logic</span><span aria-hidden="true" className="text-orange-400">/</span><span>Data</span>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#contact" className="mt-7 inline-flex min-h-11 items-center gap-3 rounded-sm text-sm font-medium underline decoration-pulse-500/50 underline-offset-8 transition-colors hover:text-pulse-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pulse-500 focus-visible:ring-offset-4 focus-visible:ring-offset-background dark:hover:text-pulse-400">
+                Let’s build something together <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </a>
+            </div>
           </div>
-          <FeatureCard
-            icon={
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5 sm:w-6 sm:h-6"
+
+          <ol className="min-w-0 border-t border-border">
+            {skills.map(({ title, description, technologies, icon: Icon }, index) => (
+              <motion.li
+                key={title}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.35 }}
+                className="group relative border-b border-border py-6 sm:py-7"
               >
-                <path d="M4 4h6v12H4z"></path>
-                <path d="M14 4h6v8h-6z"></path>
-                <path d="M14 16h6v4h-6z"></path>
-              </svg>
-            }
-            title="Responsive Design"
-            description="Creating beautiful, mobile-first designs that work seamlessly across all devices and screen sizes."
-            index={1}
-          />
-          <div className='relative'>
-            {showGif && (
-        <img 
-          src="/lovable-uploads/finnickPeekingBottom-cropped.gif" 
-          alt="Finnick peeking" 
-          className="w-[150px] hidden md:block  absolute -top-28" 
-        />
-      )}
-          <FeatureCard
-            icon={
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5 sm:w-6 sm:h-6"
-              >
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-              </svg>
-            }
-            title="Performance Optimization"
-            description="Focused on web performance, Core Web Vitals, and creating lightning-fast user experiences."
-            index={2}
-          />
-          </div>
-          <FeatureCard
-            icon={
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5 sm:w-6 sm:h-6"
-              >
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
-                <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
-                <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" x2="12" y1="22.08" y2="12"></line>
-              </svg>
-            }
-            title="Modern Tooling"
-            description="Proficient with Vite, Webpack, Git, and modern development tools for efficient workflows."
-            index={3}
-          />
-          <FeatureCard
-            icon={
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5 sm:w-6 sm:h-6"
-              >
-                <path d="M9 12l2 2 4-4"></path>
-                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-                <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
-                <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"></path>
-                <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path>
-              </svg>
-            }
-            title="API Integration"
-            description="Experienced in RESTful APIs, GraphQL, and connecting frontend applications with backend services."
-            index={4}
-          />
-          <FeatureCard
-            icon={
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5 sm:w-6 sm:h-6"
-              >
-                <path d="M16 18l2-2-2-2"></path>
-                <path d="M8 6l-2 2 2 2"></path>
-                <path d="M12 2v20"></path>
-              </svg>
-            }
-            title="Clean Code"
-            description="Writing maintainable, scalable code following best practices, SOLID principles, and design patterns."
-            index={5}
-          />
+                <div aria-hidden="true" className="pointer-events-none absolute -inset-x-3 inset-y-0 rounded-lg bg-pulse-500/0 transition-colors duration-300 group-hover:bg-pulse-500/5 motion-reduce:transition-none" />
+                <div className="relative flex gap-3 sm:gap-5">
+                  <span className="pt-2 font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">{title}</h3>
+                      <Icon aria-hidden="true" strokeWidth={1.5} className="h-6 w-6 shrink-0 text-pulse-600 dark:text-pulse-400" />
+                    </div>
+                    <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">{description}</p>
+                    <ul aria-label={`${title} technologies`} className="mt-4 flex flex-wrap gap-2">
+                      {technologies.map((technology) => (
+                        <li key={technology} className="rounded-md border border-border bg-muted/40 px-2.5 py-1 font-mono text-[11px] text-muted-foreground sm:text-xs">{technology}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

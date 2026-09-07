@@ -148,7 +148,7 @@ const SpecsSection = () => {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display leading-tight mb-8 sm:mb-12"
           >
             <span className="block bg-clip-text text-transparent bg-[url('/text-mask-image.jpg')] bg-cover bg-center">
-              I work with modern frontend technologies to build scalable, performant web applications. From React and TypeScript to cutting-edge frameworks, I create digital experiences that users love.
+              I work across the full stack — React and Next.js frontends, Laravel and Node.js backends, and MySQL databases — to build scalable, secure, and performant web applications that users love.
             </span>
           </motion.h2>
         </motion.div>

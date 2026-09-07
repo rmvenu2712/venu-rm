@@ -66,12 +66,12 @@ const Index = () => {
 
   // Set page title and meta for portfolio
   useEffect(() => {
-    document.title = "Frontend Developer Portfolio | React & TypeScript Expert";
-    
+    document.title = "Full-Stack Developer Portfolio | React, Next.js & Laravel Expert";
+
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Experienced frontend developer specializing in React, TypeScript, and modern web technologies. View my portfolio and get in touch for your next project.');
+      metaDescription.setAttribute('content', 'Full-stack developer specializing in React/Next.js frontends and Laravel/MySQL backends. View my portfolio and get in touch for your next project.');
     }
   }, []);
 

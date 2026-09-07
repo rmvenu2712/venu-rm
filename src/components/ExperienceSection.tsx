@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { Calendar, MapPin, ExternalLink } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import SplitText from "./SplitText";
+import experienceCharacter from '../../public/lovable-uploads/image.png'
+import FollowingEyes2 from "./FollowingEyes2";
 
 const ExperienceSection = () => {
   const dividerRef = useRef<HTMLDivElement>(null);
@@ -35,17 +37,17 @@ const ExperienceSection = () => {
     {
       year: "2023 - 2025",
       month: "Dec 2023 - Present",
-      title: "Frontend Developer",
-      company: "Vilvabusiness",
+      title: "Full-Stack Developer",
+      company: "Vilva Business",
       location: "Kalyani ammal Street, Ambatur, Chennai",
       companyUrl: "https://vilvabusiness.com",
       certificationUrl: "https://novitech.com/certificate/12345",
-      content: "Vilvabusiness is a trusted fintech-focused company that builds secure financial applications, trending eCommerce platforms, and software products. Along with managing its own eCommerce sites and apps, the company provides end-to-end IT consulting and digital solutions, empowering businesses to grow with innovative technology.",
+      content: "Vilva Business is a trusted fintech-focused company that builds secure financial applications, CRM and ERP platforms, and client-facing software products using React.js/Next.js frontends and Laravel/MySQL backends. Delivered 20+ full-stack applications across fintech, CRM, e-commerce, and ed-tech domains.",
       projects: [
-        "Developed scalable eCommerce platform with real-time inventory",
-        "Built bus booking application with seat selection and live tracking",
-        "Designed fintech dashboard with secure payments and analytics",
-        "Created high-conversion landing pages for multiple SaaS products"
+        "Engineered fintech dashboards for a payment gateway (merchant onboarding, UPI collections, instant payouts)",
+        "Built an MCP server exposing 27 tools for an AI-driven task/project management platform (Laravel 11 + React 19)",
+        "Automated grading for a 500+ learner exam portal, cutting manual review time by ~70%",
+        "Built an enterprise ERP covering Inventory, Procurement, HRM, and CRM with role-based access control"
       ]
     },
     {
@@ -80,7 +82,14 @@ const ExperienceSection = () => {
       viewport={{ once: true }}
     >
       {/* <div className="absolute inset-0 bg-black/20"></div> */}
-      <div className="container relative px-4 sm:px-6 lg:px-8 mx-auto">
+      <div className="container relative pt-5 px-4 sm:px-6 lg:px-8 mx-auto">
+        <div className="absolute -top-[67px] right-4 lg:right-10 w-36 z-10 pointer-events-none select-none">
+          <div className="relative">
+            <img src={experienceCharacter} className="w-full h-auto block" alt="" />
+            <FollowingEyes2 leftPercent={53} topPercent={25.4} />
+          </div>
+        </div>
+
         <motion.div
           className="mx-auto mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -110,7 +119,7 @@ const ExperienceSection = () => {
           </div>
 
           <p className="text-lg text-muted-foreground">
-            My journey in frontend development and the impact I've made at various companies
+            My journey in full-stack development and the impact I've made at various companies
           </p>
         </motion.div>
 

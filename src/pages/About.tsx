@@ -20,19 +20,21 @@ const About = () => {
             <div className="prose prose-lg mx-auto text-muted-foreground">
               <div className="bg-card rounded-2xl p-8 shadow-elegant mb-8">
                 <h2 className="text-2xl font-semibold text-foreground mb-4">
-                  Frontend Developer & UI/UX Enthusiast
+                  Full-Stack Developer & Problem Solver
                 </h2>
                 <p className="mb-6">
-                  I'm a passionate frontend developer with expertise in React, TypeScript, and modern web technologies. 
-                  I love creating beautiful, responsive, and user-friendly interfaces that deliver exceptional user experiences.
+                  I'm a full-stack developer with 3 years of experience building performant, SEO-friendly web applications
+                  with React.js/Next.js frontends and Laravel/MySQL backends. I love creating beautiful, responsive interfaces
+                  backed by secure, well-architected APIs and databases.
                 </p>
                 <p className="mb-6">
-                  With a strong foundation in design principles and cutting-edge development practices, I bridge the gap 
-                  between design and functionality to create digital experiences that not only look great but perform exceptionally.
+                  I've built custom CRM portals, admin dashboards, and client-facing platforms with complex data workflows,
+                  improving page load performance by up to 90% with code splitting and optimized APIs. I bridge the gap
+                  between frontend and backend to ship digital experiences that look great and perform exceptionally.
                 </p>
                 <p>
-                  When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-                  or sharing my knowledge with the developer community.
+                  When I'm not coding, you can find me exploring new technologies like MCP-based AI automation,
+                  contributing to open-source projects, or sharing my knowledge with the developer community.
                 </p>
               </div>
 
@@ -40,20 +42,20 @@ const About = () => {
                 <div className="bg-card rounded-2xl p-6 shadow-elegant">
                   <h3 className="text-xl font-semibold text-foreground mb-4">Skills</h3>
                   <ul className="space-y-2">
-                    <li>React & Next.js</li>
-                    <li>TypeScript & JavaScript</li>
-                    <li>Tailwind CSS & SCSS</li>
-                    <li>Node.js & Express</li>
-                    <li>Git & Version Control</li>
-                    <li>Responsive Design</li>
+                    <li>React, Next.js & TypeScript</li>
+                    <li>PHP & Laravel</li>
+                    <li>Node.js & REST APIs</li>
+                    <li>MySQL & Database Design</li>
+                    <li>JWT/OAuth Authentication</li>
+                    <li>Tailwind CSS & Responsive Design</li>
                   </ul>
                 </div>
 
                 <div className="bg-card rounded-2xl p-6 shadow-elegant">
                   <h3 className="text-xl font-semibold text-foreground mb-4">Interests</h3>
                   <ul className="space-y-2">
-                    <li>Modern Web Technologies</li>
-                    <li>User Experience Design</li>
+                    <li>Full-Stack Architecture</li>
+                    <li>AI & Automation (MCP)</li>
                     <li>Performance Optimization</li>
                     <li>Open Source Projects</li>
                     <li>Tech Community</li>

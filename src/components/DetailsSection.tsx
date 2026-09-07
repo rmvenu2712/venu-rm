@@ -94,27 +94,31 @@ const handleSubmit = async (e: React.FormEvent) => {
   const techStackItems = [
     {
       title: "Frontend",
-      description: "React, TypeScript, Next.js ."
+      description: "React, Next.js, TypeScript, Tailwind CSS ."
     },
     {
-      title: "Styling",
-      description: "CSS-in-JS, Tailwind CSS, Bootstrap ."
+      title: "Backend",
+      description: "PHP, Laravel, Node.js, REST APIs ."
+    },
+    {
+      title: "Database",
+      description: "MySQL, Database Design, Query Optimization ."
+    },
+    {
+      title: "Authentication",
+      description: "JWT, OAuth, Laravel Sanctum, secure data handling ."
+    },
+    {
+      title: "AI & Automation",
+      description: "MCP Server Development, Anthropic API, Claude Code."
     },
     {
       title: "Tools",
-      description: "Vite, Git, VS Code, Figma ."
-    },
-    {
-      title: "Animation Frameworks",
-      description: "Framer Motion, GSAP, Three.js, etc."
-    },
-    {
-      title: "Testing",
-      description: "Jest, React Testing Library ."
+      description: "Git, GitHub, Postman, Figma, VS Code ."
     },
     {
       title: "Experience",
-      description: "2+ Years – Delivering real-world solutions for diverse projects."
+      description: "3+ Years – Delivering full-stack solutions for diverse projects."
     }
   ];
 
@@ -141,7 +145,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             {/* Card Content */}
             <div className="p-4 sm:p-8 bg-background">
               <h3 className="text-lg sm:text-xl font-display mb-6 sm:mb-8 text-gray-900 dark:text-gray-100">
-                Technologies and tools I use to build modern, efficient web apps
+                Technologies and tools I use to build modern, full-stack web apps
               </h3>
 
               <div className="space-y-4 sm:space-y-6">

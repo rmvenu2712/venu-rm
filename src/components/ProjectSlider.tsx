@@ -1,6 +1,8 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+﻿import { useRef, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
+
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, Github } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -8,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+
 
 const ProjectSlider = () => {
   const projects = [
@@ -80,145 +82,76 @@ const ProjectSlider = () => {
     }
   ];
 
-  // Fixed: Remove useRef and create plugin instance directly
-  const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
-  );
+  const reduceMotion = useReducedMotion();
+  const [showAnimal, setShowAnimal] = useState(false);
+  const autoplay = useRef(Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true, stopOnFocusIn: true }));
 
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/4 -left-20 w-96 h-96 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.5, 0.3, 0.5],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+        <motion.div className="relative pb-10 pt-24 sm:pt-28" onViewportEnter={() => setShowAnimal(true)} viewport={{ once: true, amount: 0.15 }}>
+      <div aria-hidden="true" className="pointer-events-none absolute right-5 top-0 flex h-24 w-28 items-end overflow-hidden sm:right-10 sm:h-28 sm:w-36">
+        {showAnimal && !reduceMotion && (
+          <img src="/lovable-uploads/finnickPeekingBottom-cropped.gif" alt="" className="block h-auto w-full" />
+        )}
       </div>
-
-      <div className=" md:container mx-auto relative z-10">
-        <div className="max-w-[1400px] mx-auto relative">
-          <Carousel
-            plugins={[plugin.current]}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            onMouseEnter={plugin.current?.stop}
-            onMouseLeave={plugin.current?.reset}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {projects.map((project, index) => (
-                <CarouselItem 
-                  key={project.id} 
-                  className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/4"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    className="h-full"
-                  >
-                    <div className="group relative overflow-hidden border border-border/50 bg-card/80 backdrop-blur-xl hover:border-primary/50 transition-all duration-500 h-full rounded-2xl shadow-lg hover:shadow-2xl">
-                      <div className="relative overflow-hidden aspect-[4/3]">
-                        <motion.img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.6 }}
-                        />
-
-                        {/* Hover overlay with icons */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-3">
-                          <motion.a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground shadow-xl"
-                            initial={{ scale: 0, rotate: -180 }}
-                            whileInView={{ scale: 1, rotate: 0 }}
-                            whileHover={{ scale: 1.15 }}
-                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                            viewport={{ once: false }}
-                          >
-                            <ExternalLink className="w-5 h-5" />
-                          </motion.a>
-
-                          <motion.a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center w-12 h-12 rounded-full bg-foreground text-background shadow-xl"
-                            initial={{ scale: 0, rotate: 180 }}
-                            whileInView={{ scale: 1, rotate: 0 }}
-                            whileHover={{ scale: 1.15 }}
-                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                            viewport={{ once: false }}
-                          >
-                            <Github className="w-5 h-5" />
-                          </motion.a>
-                        </div>
-                      </div>
-
-                      <div className="p-4">
-                        <h3 className="text-base font-display font-bold mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                          {project.title}
-                        </h3>
-                        <p className="text-muted-foreground text-xs mb-3 line-clamp-2">
-                          {project.description}
-                        </p>
-
-                        <div className="flex flex-wrap gap-1">
-                          {project.tech.slice(0, 2).map((tech, techIndex) => (
-                            <span
-                              key={techIndex}
-                              className="px-2 py-1 bg-primary/10 text-primary rounded-md text-[10px] font-medium"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                          {project.tech.length > 2 && (
-                            <span className="px-2 py-1 bg-muted text-muted-foreground rounded-md text-[10px]">
-                              +{project.tech.length - 2}
-                            </span>
-                          )}
-                        </div>
-                      </div>
+      <Carousel plugins={reduceMotion ? [] : [autoplay.current]} opts={{ align: "start", loop: true, duration: reduceMotion ? 0 : 25 }} aria-label="Featured projects" className="w-full">
+        <CarouselContent className="-ml-4 items-stretch">
+          {projects.map((project, index) => (
+            <CarouselItem key={project.id} className="basis-full pl-4 md:basis-1/2 lg:basis-1/4">
+              <motion.article
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.4 }}
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300 hover:border-pulse-400/60 motion-reduce:transition-none"
+              >
+                <div className={`relative overflow-hidden p-3 pb-0 ${index % 2 === 0 ? 'bg-[#f2e9df] dark:bg-[#28231f]' : 'bg-[#e7ecef] dark:bg-[#1c2730]'}`}>
+                  <div className="mb-3 flex items-center justify-between gap-2">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-gray-600 dark:text-gray-300">Project / {String(index + 1).padStart(2, '0')}</span>
+                    <span className="rounded-full border border-black/10 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-gray-700 dark:border-white/15 dark:text-gray-200">Web</span>
+                  </div>
+                  <div className="overflow-hidden rounded-t-xl border border-black/10 bg-background shadow-[0_12px_35px_-12px_rgba(0,0,0,0.3)] transition-transform duration-500 group-hover:-translate-y-1 motion-reduce:transform-none motion-reduce:transition-none">
+                    <div aria-hidden="true" className="flex h-8 items-center gap-1.5 border-b border-border bg-background px-3">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#f28b82]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#fdd663]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#81c995]" />
+                      <span className="ml-3 min-w-0 truncate text-[9px] text-muted-foreground">{new URL(project.liveUrl).hostname}</span>
                     </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
+                    <img src={project.image} alt={`${project.title} preview`} loading="lazy" className="aspect-[16/10] w-full object-cover object-top" />
+                  </div>
+                </div>
 
-            {/* <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16 w-12 h-12 bg-primary/90 text-primary-foreground border-primary/30 hover:bg-primary shadow-xl" /> */}
-            {/* <CarouselNext className="hidden md:flex -right-12 lg:-right-16 w-12 h-12 bg-primary/90 text-primary-foreground border-primary/30 hover:bg-primary shadow-xl" /> */}
-          </Carousel>
+                <div className="flex flex-1 flex-col p-4">
+                  <h3 className="font-display text-base font-semibold leading-snug tracking-tight">{project.title}</h3>
+                  <p className="mt-2 line-clamp-3 text-xs leading-5 text-muted-foreground">{project.description}</p>
+                  <ul aria-label="Technologies used" className="mb-4 mt-3 flex flex-wrap gap-1.5">
+                    {project.tech.map((tech) => (
+                      <li key={tech} className="rounded-md bg-muted px-2.5 py-1 font-mono text-[10px] text-muted-foreground">{tech}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} live (opens in a new tab)`} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-3 py-2.5 text-xs font-medium text-background transition-colors hover:bg-pulse-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pulse-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                      Live project <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                    </a>
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View source for ${project.title} on GitHub (opens in a new tab)`} className="inline-flex min-h-11 items-center gap-2 rounded-md px-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pulse-500">
+                      <Github aria-hidden="true" className="h-4 w-4" /> Source
+                    </a>
+                  </div>
+                </div>
+              </motion.article>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="mt-6 flex items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">{projects.length} projects to explore</p>
+          <div className="flex gap-2">
+            <CarouselPrevious className="static h-11 w-11 translate-y-0 border-border hover:border-pulse-500 hover:bg-pulse-500 hover:text-white" />
+            <CarouselNext className="static h-11 w-11 translate-y-0 border-border hover:bg-pulse-500 hover:text-white" />
+          </div>
         </div>
-      </div>
-    </section>
+      </Carousel>
+    </motion.div>
   );
 };
 
 export default ProjectSlider;
+

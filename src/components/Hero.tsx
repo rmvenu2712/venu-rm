@@ -132,9 +132,9 @@ const Hero = () => {
 
 
   const texts = [
-    "Frontend developer specializing in React, TypeScript, and modern web technologies.",
-    "Building fast, beautiful, and responsive web experiences.",
-    "Passionate about clean code and great user interfaces.",
+    "Full-stack developer specializing in React/Next.js frontends and Laravel/MySQL backends.",
+    "Building performant, secure, and scalable web applications end to end.",
+    "Passionate about clean code, solid architecture, and great user experiences.",
     // Add more phrases here...
   ];
 
@@ -196,7 +196,7 @@ const Hero = () => {
             <div className="flex items-center gap-4 mb-6">
               <div className="pulse-chip">
                 <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">01</span>
-                <span>Frontend Developer</span>
+                <span>Full-Stack Developer</span>
               </div>
             </div>
 
