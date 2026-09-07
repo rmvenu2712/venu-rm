@@ -7,10 +7,10 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
-import Blog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
+// import Blog from "./pages/Blog";
+// import BlogDetail from "./pages/BlogDetail";
 import NotFound from "./pages/NotFound";
-import ResumePage from "./components/Resume";
+// import ResumePage from "./components/Resume";
 
 const queryClient = new QueryClient();
 
@@ -25,9 +25,10 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/resume" element={<ResumePage />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogDetail />} />
+            {/* /resume and /blog are hidden for now (not deleted) — uncomment to re-enable */}
+            {/* <Route path="/resume" element={<ResumePage />} /> */}
+            {/* <Route path="/blog" element={<Blog />} /> */}
+            {/* <Route path="/blog/:id" element={<BlogDetail />} /> */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

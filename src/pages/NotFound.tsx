@@ -1,79 +1,93 @@
-import { useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
-import ScrollProgress from "@/components/ScrollProgress";
+﻿import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ArrowLeft, ArrowUpRight, Compass, Moon, Sun } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { useTheme } from "@/components/ThemeProvider";
 
 const NotFound = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
+  const { theme, setTheme } = useTheme();
+  const reduceMotion = useReducedMotion();
+  const isDark = theme === "dark";
+  const focusStyle = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pulse-500 focus-visible:ring-offset-4 focus-visible:ring-offset-background";
 
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
+    const previousTitle = document.title;
+    document.title = "Page not found | Venu RM";
+    return () => { document.title = previousTitle; };
+  }, []);
 
   return (
-    <>
-      <ScrollProgress />
-      <main className="min-h-screen flex items-center justify-center bg-[#FFF7F0] text-[#111827] dark:bg-[#020617] dark:text-white transition-colors duration-500">
-        {/* animated gradient blob background */}
-        <div className="pointer-events-none fixed inset-0 overflow-hidden">
-          <div
-            className="absolute -left-1/4 top-0 h-[55vh] w-[120vw] bg-[radial-gradient(circle_at_top,_#ffb347_0,_#ff7a18_35%,_#ff5500_60%,_transparent_70%)] dark:bg-[radial-gradient(circle_at_top,_#7c2d12_0,_#ea580c_35%,_#f97316_60%,_transparent_70%)] opacity-80 blur-3xl animate-[pulse_7s_ease-in-out_infinite]"
-          />
-        </div>
+    <div className="flex min-h-[100svh] flex-col bg-background text-foreground">
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 sm:px-10">
+        <Link to="/" aria-label="Venu RM home" className={`inline-flex min-h-11 items-center rounded-sm ${focusStyle}`}>
+          <img src="/venu-logo.png" alt="VENU logo" className="h-10 w-auto" />
+        </Link>
+        <button
+          type="button"
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          className={`flex h-11 w-11 items-center justify-center rounded-full border border-border transition-colors hover:bg-muted ${focusStyle}`}
+        >
+          {isDark ? <Sun aria-hidden="true" className="h-4 w-4" /> : <Moon aria-hidden="true" className="h-4 w-4" />}
+        </button>
+      </header>
 
-        <section className="relative z-10 px-4 sm:px-6 lg:px-8 w-full">
-          <div className="mx-auto max-w-xl rounded-3xl bg-white/70 dark:bg-slate-950/60 backdrop-blur-xl border border-orange-100/60 dark:border-orange-500/20 shadow-[0_40px_120px_rgba(0,0,0,0.15)] dark:shadow-[0_40px_120px_rgba(0,0,0,0.8)] px-6 py-10 sm:px-10 sm:py-12 flex flex-col items-center text-center transform animate-[fadeInUp_0.7s_ease-out]">
-            {/* pill */}
-            <p className="inline-flex items-center gap-2 rounded-full bg-orange-50 dark:bg-orange-500/10 border border-orange-200/80 dark:border-orange-500/40 px-4 py-1 text-[11px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-orange-500 dark:text-orange-300">
-              <span className="h-2 w-2 rounded-full bg-orange-400 animate-ping" />
-              404 · Page not found
-            </p>
-
-            {/* heading */}
-            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              Lost in the gradient.
-            </h1>
-
-            <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-md">
-              The page
-              <span className="mx-1 font-mono text-xs sm:text-sm text-orange-600 dark:text-orange-300 break-all">
-                {location.pathname}
+      <main className="mx-auto flex w-full max-w-7xl flex-1 items-center px-6 py-12 sm:px-10 sm:py-16">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-8 flex items-center gap-4">
+              <span className="pulse-chip shrink-0">
+                <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-pulse-500 text-white"><Compass aria-hidden="true" className="h-3 w-3" /></span>
+                Page not found
               </span>
-              does not exist. Maybe it was never deployed.
-            </p>
-
-            {/* floating 404 badge */}
-            <div className="mt-8 mb-4 relative">
-              <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-3xl bg-gradient-to-br from-orange-500 via-orange-400 to-amber-300 dark:from-orange-600 dark:via-orange-500 dark:to-amber-400 text-white flex items-center justify-center text-3xl sm:text-4xl font-black shadow-lg shadow-orange-500/40 animate-[float_4s_ease-in-out_infinite]">
-                404
-              </div>
+              <div aria-hidden="true" className="h-px flex-1 bg-border" />
             </div>
-
-            {/* buttons */}
-            <div className="mt-4 flex flex-col sm:flex-row gap-3 w-full sm:w-auto justify-center">
-              <Link
-                to="/"
-                className="group relative inline-flex items-center justify-center w-full sm:w-auto rounded-full bg-gradient-to-r from-orange-500 to-amber-400 text-sm sm:text-base font-medium text-white px-6 py-2.5 shadow-md shadow-orange-500/40 hover:shadow-xl hover:shadow-orange-500/50 transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                <span className="pr-2">Back to Home</span>
-                <span className="transform transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
+            <h1 className="font-display text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl xl:text-7xl">
+              A little<br />off <span className="font-playfair font-normal italic text-pulse-600 dark:text-pulse-400">course.</span>
+            </h1>
+            <p className="mt-6 max-w-sm text-base leading-7 text-muted-foreground">
+              Looks like this page has moved or doesn’t exist. Let’s get you back to something good.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link to="/" className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-pulse-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-pulse-700 ${focusStyle}`}>
+                <ArrowLeft aria-hidden="true" className="h-4 w-4" /> Back to home
               </Link>
-
-              <Link
-                to="/projects"
-                className="inline-flex items-center justify-center w-full sm:w-auto rounded-full border border-slate-200 dark:border-slate-600 bg-white/70 dark:bg-slate-900/70 px-6 py-2.5 text-sm sm:text-base font-medium text-slate-800 dark:text-slate-100 hover:border-orange-400 hover:text-orange-600 dark:hover:text-orange-300 transition-colors duration-300"
-              >
-                View my work
+              <Link to="/projects" className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium transition-colors hover:border-pulse-500 hover:text-pulse-600 dark:hover:text-pulse-400 ${focusStyle}`}>
+                Explore projects <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
               </Link>
+            </div>
+          </motion.div>
+
+          <div className="relative isolate overflow-hidden rounded-[2rem] border border-border bg-muted/30 px-5 py-10 sm:px-8 sm:py-14">
+            <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-20 -z-10 h-72 w-72 rounded-full border border-pulse-500/20" />
+            <div aria-hidden="true" className="pointer-events-none absolute -right-10 -top-10 -z-10 h-52 w-52 rounded-full border border-pulse-500/20" />
+            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+              <span>Wrong turn, right place</span>
+              <Compass aria-hidden="true" strokeWidth={1.5} className="h-5 w-5 text-pulse-500" />
+            </div>
+            <p aria-label="Error 404" className="my-8 text-center font-display text-[clamp(6rem,20vw,12rem)] font-bold leading-none tracking-tighter">
+              4<span className="font-playfair font-normal italic text-pulse-600 dark:text-pulse-400">0</span>4
+            </p>
+            <div className="border-t border-border pt-5">
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Requested page</p>
+              <p className="break-all font-mono text-xs leading-5 text-muted-foreground">{pathname}</p>
             </div>
           </div>
-        </section>
+        </div>
       </main>
-    </>
+
+      <footer className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-6 text-xs text-muted-foreground sm:px-10">
+        <span>Venu RM / Full-stack developer</span>
+        <Link to="/" className={`inline-flex min-h-11 items-center gap-2 rounded-sm hover:text-foreground ${focusStyle}`}>
+          Back to home <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+        </Link>
+      </footer>
+    </div>
   );
 };
 
